@@ -10,6 +10,7 @@ namespace AdventOfCode.Year2021.Day01
         public Day01B() { }
         public Day01B(InputParserFactory<Day01B> inputParserFactory) 
             : base(inputParserFactory) { }
+        
         public override string Solve()
         {
             var depths = ParserFactory.CreateMultiLineStringParser()
