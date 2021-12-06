@@ -1,13 +1,16 @@
-using AdventOfCode.Problem;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Year2021.Day05
 {
-    public class Day05B : ProblemWithInput<Day05B>
+    public class Day05B : Day05A
     {
-        public override string Solve()
+        protected override List<Line> GetLines()
         {
-            // var data = ParserFactory.CreateMultiLineStringParser().GetData();
-            return "Not Solved";
+            return ParserFactory.CreateMultiLineStringParser()
+                .GetData()
+                .Select(s => s.ExtractLine())
+                .ToList();
         }
     }
 }
