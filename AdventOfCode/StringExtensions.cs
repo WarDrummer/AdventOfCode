@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode
 {
@@ -8,6 +10,11 @@ namespace AdventOfCode
         {
             Console.WriteLine($"{day} result: {s}".Trim());
             Console.WriteLine();
+        }
+
+        public static IEnumerable<int> SplitIntOn(this string s, char separator)
+        {
+            return s.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
         }
     }
 }
