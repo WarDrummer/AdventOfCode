@@ -13,7 +13,7 @@ namespace AdventOfCode
             // new Year2019Executor().Execute();
             // new Year2020Executor().Execute();
 
-            for (var i = 0; i < 2; i++)
+            for (var i = 0; i < 10; i++)
             {
                 new Year2021Executor().Execute();
             }

@@ -9,23 +9,22 @@ namespace AdventOfCode.Year2021.Day05
         public override string Solve()
         {
             var lines = GetLines();
-            var ptCount = new Dictionary<int, int>();
-            
+            var seen = new HashSet<int>();
+            var overlapping = new HashSet<int>();
+
             foreach (var line in lines)
             {
                 foreach (var pt in line.GetPointsOnLine())
                 {
                     var hash = pt.GetHashCode();
-                    if (!ptCount.ContainsKey(hash))
-                    {
-                        ptCount[hash] = 0;
-                    }
-
-                    ptCount[hash]++;
+                    if (seen.Contains(hash))
+                        overlapping.Add(hash);
+                    else
+                        seen.Add(hash);
                 }
             }
-            
-            return ptCount.Count(kvp => kvp.Value > 1).ToString();
+
+            return overlapping.Count.ToString();
         }
 
         protected virtual List<Line> GetLines()
