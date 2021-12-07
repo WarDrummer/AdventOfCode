@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2021.Day07
@@ -6,8 +8,17 @@ namespace AdventOfCode.Year2021.Day07
     {
         public override string Solve()
         {
-            // var data = ParserFactory.CreateMultiLineStringParser().GetData();
-            return "Not Solved";
+            var positions = ParserFactory.CreateSingleLineStringParser()
+                .GetData()
+                .SplitIntOn(',')
+                .ToArray();
+            
+            Array.Sort(positions);
+            
+            var targetPosition = positions[positions.Length / 2]; // median
+            return positions
+                .Sum(position => Math.Abs(position - targetPosition))
+                .ToString();
         }
     }
 }

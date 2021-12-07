@@ -1,5 +1,3 @@
-using AdventOfCode.Problem;
-
 namespace AdventOfCode.Year2021.Day06
 {
     public class Day06B : Day06A
