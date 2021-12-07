@@ -11,11 +11,12 @@ namespace AdventOfCode
             // new Year2017Executor().Execute();
             // new Year2018Executor().Execute();
             // new Year2019Executor().Execute();
-            //new Year2020Executor().Execute();
-            
-            new Year2021Executor().Execute();
-            new Year2021Executor().Execute();
-            
+            // new Year2020Executor().Execute();
+
+            for (var i = 0; i < 2; i++)
+            {
+                new Year2021Executor().Execute();
+            }
         }
     }
 }

@@ -20,16 +20,14 @@ namespace AdventOfCode
         public static Line ExtractLine(this string s)
         {
             // 0,9 -> 5,9
-            var pts = s.Split(new []{" -> "}, StringSplitOptions.RemoveEmptyEntries);
-   
-            var coords1 = pts[0].Split(',').Select(short.Parse).ToArray();
-            var coords2 = pts[1].Split(',').Select(short.Parse).ToArray();
+            var pts = s
+                .Split(new []{" -> ", ","}, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
             
-            return new Line
-            {
-                Start = new PointS( coords1[0], coords1[1]),
-                End = new PointS( coords2[0], coords2[1])
-            };
+            return Line.Create(
+                new Point( pts[0], pts[1]), 
+                new Point( pts[2], pts[3]));
         }
     }
 }

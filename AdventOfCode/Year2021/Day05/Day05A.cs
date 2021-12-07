@@ -9,18 +9,19 @@ namespace AdventOfCode.Year2021.Day05
         public override string Solve()
         {
             var lines = GetLines();
-            var ptCount = new Dictionary<PointS, int>();
+            var ptCount = new Dictionary<int, int>();
             
             foreach (var line in lines)
             {
                 foreach (var pt in line.GetPointsOnLine())
                 {
-                    if (!ptCount.ContainsKey(pt))
+                    var hash = pt.GetHashCode();
+                    if (!ptCount.ContainsKey(hash))
                     {
-                        ptCount[pt] = 0;
+                        ptCount[hash] = 0;
                     }
 
-                    ptCount[pt]++;
+                    ptCount[hash]++;
                 }
             }
             
@@ -32,7 +33,7 @@ namespace AdventOfCode.Year2021.Day05
             return ParserFactory.CreateMultiLineStringParser()
                 .GetData()
                 .Select(s => s.ExtractLine())
-                .Where(l => l.IsVertical() || l.IsHorizontal())
+                .Where(l => l is HorizontalLine or VerticalLine)
                 .ToList();
         }
     }
