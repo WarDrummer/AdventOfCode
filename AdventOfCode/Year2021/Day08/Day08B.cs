@@ -9,13 +9,8 @@ namespace AdventOfCode.Year2021.Day08
     {
         private static readonly Dictionary<string, char> MissingLetterLookup = new()
         {
-            {"bcdefg", 'a'},
-            {"acdefg", 'b'},
-            {"abdefg", 'c'},
-            {"abcefg", 'd'},
-            {"abcdfg", 'e'},
-            {"abcdeg", 'f'},
-            {"abcdef", 'g'},
+            {"bcdefg", 'a'}, {"acdefg", 'b'}, {"abdefg", 'c'}, {"abcefg", 'd'},
+            {"abcdfg", 'e'}, {"abcdeg", 'f'}, {"abcdef", 'g'}
         };
         
         public override string Solve()
@@ -23,139 +18,105 @@ namespace AdventOfCode.Year2021.Day08
             var signalValues = ParserFactory.CreateMultiLineStringParser()
                 .GetData()
                 .Select(s => s.Split(new[] { ' ', '|' }, StringSplitOptions.RemoveEmptyEntries))
+                .Select(s => s.Select(x => x.Alphabetize()).ToList())
                 .ToList();
-            
+
             var codesTotal = 0;
             foreach (var signal in signalValues)
             {
                 var lookup = GetStringToNumberLookup(signal.Take(10).ToList());
-                codesTotal += lookup[signal[10].Alphabetize()] * 1000;
-                codesTotal += lookup[signal[11].Alphabetize()] * 100;
-                codesTotal += lookup[signal[12].Alphabetize()] * 10;
-                codesTotal += lookup[signal[13].Alphabetize()];
+                codesTotal += lookup[signal[10]] * 1000;
+                codesTotal += lookup[signal[11]] * 100;
+                codesTotal += lookup[signal[12]] * 10;
+                codesTotal += lookup[signal[13]];
             }
-
             return codesTotal.ToString();
         }
         
         private IDictionary<string, int> GetStringToNumberLookup(IList<string> signals)
         {
-            var lookup = new Dictionary<string, int>();
-            var reverseLookup = new Dictionary<int, string>();
-            var identifiableCounts = signals
-                .Where(s => s.Length != 6 && s.Length != 5)
-                .Select(s => s.Alphabetize())
-                .ToList();
+            var lookup = new TwoWayLookup<string, int>();
+            var fiveLetterSignals = new List<string>(3);
+            var sixLetterSignals = new List<string>(3);
             
-            foreach(var signal in identifiableCounts)
+            foreach(var signal in signals)
             {
                 switch (signal.Length)
                 {
-                    case 2:
-                        reverseLookup.Add(1, signal);
-                        lookup.Add(reverseLookup[1], 1);
-                        break;
-                    case 3:
-                        reverseLookup.Add(7, signal);
-                        lookup.Add(reverseLookup[7], 7);
-                        break;
-                    case 4:
-                        reverseLookup.Add(4, signal);
-                        lookup.Add(reverseLookup[4], 4);
-                        break;
-                    case 7:
-                        reverseLookup.Add(8, signal);
-                        lookup.Add(reverseLookup[8], 8);
-                        break;
+                    case 2: lookup.Add(signal, 1); break; // Find #1
+                    case 3: lookup.Add(signal, 7); break; // Find #7
+                    case 4: lookup.Add(signal, 4); break; // Find #4
+                    case 7: lookup.Add(signal, 8); break; // Find #8
+                    case 5: fiveLetterSignals.Add(signal); break;
+                    case 6: sixLetterSignals.Add(signal); break;
                 }
             }
-            
-            var fiveCounts = signals
-                .Where(s => s.Length == 5)
-                .Select(s => s.Alphabetize())
-                .ToList();
-            
-            var sixCounts = signals
-                .Where(s => s.Length == 6)
-                .Select(s => s.Alphabetize())
-                .ToList();
 
-            var fiveCountHashes = fiveCounts
+            var fiveLetterLookups = fiveLetterSignals
                 .Select(s => new HashSet<char>(s))
                 .ToList();
 
             // Find #0
-            for (var i = 0; i < sixCounts.Count; i++)
+            // #0's missing letter appears in all five letter signals (no other six letter signals do)
+            for (var i = 0; i < sixLetterSignals.Count; i++)
             {
-                var missingLetter = MissingLetterLookup[sixCounts[i]];
-                if (fiveCountHashes[0].Contains(missingLetter) &&
-                    fiveCountHashes[1].Contains(missingLetter) &&
-                    fiveCountHashes[2].Contains(missingLetter))
+                var missingLetter = MissingLetterLookup[sixLetterSignals[i]];
+                if (fiveLetterLookups.All(l => l.Contains(missingLetter)))
                 {
-                    reverseLookup.Add(0, sixCounts[i]);
-                    lookup.Add(reverseLookup[0], 0);
-                    sixCounts.RemoveAt(i);
+                    lookup.Add(sixLetterSignals[i], 0);
+                    sixLetterSignals.RemoveAt(i);
                     break;
                 }
             }
             
-            // Find #6
-            // cdfgeb  6 ab.defg (missing letter is only missing in 1 of 5-letter numbers #2, #3, #5)
-            for (var i = 0; i < sixCounts.Count; i++)
+            // Find #6 and #9
+            // #6's missing number appears exactly once in the five letter signals
+            // #9 is the last remaining six letter signal 
+            var missing = MissingLetterLookup[sixLetterSignals[0]];
+            var count = fiveLetterLookups.Count(h => !h.Contains(missing));
+            if (count == 1)
             {
-                var missingLetter = MissingLetterLookup[sixCounts[i]];
-                var count = fiveCountHashes.Count(h => !h.Contains(missingLetter));
-                if (count == 1)
-                {
-                    reverseLookup.Add(6, sixCounts[i]);
-                    lookup.Add(reverseLookup[6], 6);
-                    sixCounts.RemoveAt(i);
-                    break;
-                }
-            }
-            
-            // Find #9
-            reverseLookup.Add(9, sixCounts[0]);
-            lookup.Add(reverseLookup[9], 9);
-            
-            // Find #3
-            var seven = reverseLookup[7];
-            for (var i = 0; i < fiveCounts.Count; i++)
-            {
-                var item = fiveCounts[i];
-                if (item.Length != 5) 
-                    continue;
-                
-                var letters = new HashSet<char>(item);
-                if (letters.Contains(seven[0]) && letters.Contains(seven[1]) && letters.Contains(seven[2]))
-                {
-                    reverseLookup.Add(3, item.Alphabetize());
-                    lookup.Add(reverseLookup[3], 3);
-                    fiveCounts.RemoveAt(i);
-                    break;
-                }
-            }
-            
-            // Find #5
-            var missingFromNine =  MissingLetterLookup[reverseLookup[9]];
-            if (fiveCounts[0].Contains(missingFromNine))
-            {
-                reverseLookup.Add(2, fiveCounts[0]);
-                lookup.Add(reverseLookup[2], 2);
-                
-                reverseLookup.Add(5, fiveCounts[1]);
-                lookup.Add(reverseLookup[5], 5);
+                lookup.Add(sixLetterSignals[0], 6);
+                lookup.Add(sixLetterSignals[1], 9);
             }
             else
             {
-                reverseLookup.Add(5, fiveCounts[0]);
-                lookup.Add(reverseLookup[5], 5);
-                
-                reverseLookup.Add(2, fiveCounts[1]);
-                lookup.Add(reverseLookup[2], 2);
+                lookup.Add(sixLetterSignals[0], 9);
+                lookup.Add(sixLetterSignals[1], 6);
+            }
+            
+            // Find #3
+            // #3 contains all the letters in #7 (no other five letter signals do)
+            var seven = lookup.GetKeyForValue(7);
+            for (var i = 0; i < fiveLetterSignals.Count; i++)
+            {
+                var letters = new HashSet<char>(fiveLetterSignals[i]);
+                if (letters.Contains(seven[0]) && 
+                    letters.Contains(seven[1]) && 
+                    letters.Contains(seven[2]))
+                {
+                    lookup.Add(fiveLetterSignals[i], 3);
+                    fiveLetterSignals.RemoveAt(i);
+                    break;
+                }
+            }
+            
+            // Find #2 and #5
+            // #5 does not contain the letter missing from #9
+            // #2 is whatever five letter signal that is left
+            var missingFromNine =  MissingLetterLookup[lookup.GetKeyForValue(9)];
+            if (!fiveLetterSignals[0].Contains(missingFromNine))
+            {
+                lookup.Add(fiveLetterSignals[0], 5);
+                lookup.Add(fiveLetterSignals[1], 2);
+            }
+            else
+            {
+                lookup.Add(fiveLetterSignals[0], 2);
+                lookup.Add(fiveLetterSignals[1], 5);
             }
 
-            return lookup;
+            return lookup.GetLookup();
         }
     }
 }
