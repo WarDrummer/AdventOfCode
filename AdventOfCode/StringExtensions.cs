@@ -16,6 +16,13 @@ namespace AdventOfCode
         {
             return s.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
         }
+        
+        public static string Alphabetize(this string s)
+        {
+            var chars = s.ToCharArray();
+            Array.Sort(chars);
+            return new string(chars);
+        }
 
         public static Line ExtractLine(this string s)
         {
