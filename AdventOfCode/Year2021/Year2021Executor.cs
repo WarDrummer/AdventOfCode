@@ -8,6 +8,7 @@ using AdventOfCode.Year2021.Day06;
 using AdventOfCode.Year2021.Day07;
 using AdventOfCode.Year2021.Day08;
 using AdventOfCode.Year2021.Day09;
+using AdventOfCode.Year2021.Day10;
 
 namespace AdventOfCode.Year2021
 {
@@ -42,9 +43,9 @@ namespace AdventOfCode.Year2021
             ProblemFactory.Execute<Day09A>();
             ProblemFactory.Execute<Day09B>();
             
-            // ProblemFactory.Execute<Day10A>();
-            // ProblemFactory.Execute<Day10B>();
-            //
+            ProblemFactory.Execute<Day10A>();
+            ProblemFactory.Execute<Day10B>();
+            
             // ProblemFactory.Execute<Day11A>();
             // ProblemFactory.Execute<Day11B>();
             //
