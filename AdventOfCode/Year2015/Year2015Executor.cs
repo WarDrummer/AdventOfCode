@@ -5,6 +5,7 @@ using AdventOfCode.Year2015.Day03;
 using AdventOfCode.Year2015.Day04;
 using AdventOfCode.Year2015.Day15;
 using AdventOfCode.Year2015.Day17;
+using AdventOfCode.Year2015.Day19;
 
 namespace AdventOfCode.Year2015
 {
@@ -12,16 +13,16 @@ namespace AdventOfCode.Year2015
     {
         public void Execute()
         {
-            ProblemFactory.Execute<Day01A>();
-            ProblemFactory.Execute<Day01B>();
-            
-            ProblemFactory.Execute<Day02A>();
-            ProblemFactory.Execute<Day02B>();
-            
-            ProblemFactory.Execute<Day03A>();
-            ProblemFactory.Execute<Day03B>();
-            
-            ProblemFactory.Execute<Day04A>();
+            // ProblemFactory.Execute<Day01A>();
+            // ProblemFactory.Execute<Day01B>();
+            //
+            // ProblemFactory.Execute<Day02A>();
+            // ProblemFactory.Execute<Day02B>();
+            //
+            // ProblemFactory.Execute<Day03A>();
+            // ProblemFactory.Execute<Day03B>();
+            //
+            // ProblemFactory.Execute<Day04A>();
             // ProblemFactory.Execute<Day04B>();
             //
             // ProblemFactory.Execute<Day05A>();
@@ -54,20 +55,20 @@ namespace AdventOfCode.Year2015
             // ProblemFactory.Execute<Day14A>();
             // ProblemFactory.Execute<Day14B>();
             //
-            ProblemFactory.Execute<Day15A>();
-            ProblemFactory.Execute<Day15B>();
+            // ProblemFactory.Execute<Day15A>();
+            // ProblemFactory.Execute<Day15B>();
             //
             // ProblemFactory.Execute<Day16A>();
             // ProblemFactory.Execute<Day16B>();
             //
-            ProblemFactory.Execute<Day17A>();
-            ProblemFactory.Execute<Day17B>();
+            // ProblemFactory.Execute<Day17A>();
+            // ProblemFactory.Execute<Day17B>();
             //
             // ProblemFactory.Execute<Day18A>();
             // ProblemFactory.Execute<Day18B>();
             //
-            // ProblemFactory.Execute<Day19A>();
-            // ProblemFactory.Execute<Day19B>();
+            ProblemFactory.Execute<Day19A>();
+            ProblemFactory.Execute<Day19B>();
             //
             // ProblemFactory.Execute<Day20A>();
             // ProblemFactory.Execute<Day20B>();
