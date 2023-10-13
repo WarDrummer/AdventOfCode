@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2015.Day19
 {
@@ -14,67 +13,47 @@ namespace AdventOfCode.Year2015.Day19
             
             // Need to try working backwards from medicine molecule, replacing largest molecules first
             var replacements = GetReverseReplacementMappings(data);
-            var sortedKeys = replacements.Keys.ToArray();
-            Array.Sort(sortedKeys);
+            var replacementMolecules = replacements.Keys.ToArray();
+            Array.Sort(replacementMolecules);
+            Array.Reverse(replacementMolecules);
 
+            var seenMutations = new HashSet<string>();
+            var currentMutations = new Queue<string>();
+            var nextMutations = new Queue<string>();
             var count = 0;
-            var previousMolecule = medicineMolecule;
-            while (medicineMolecule != "e")
+            
+            currentMutations.Enqueue(medicineMolecule);
+            while (currentMutations.Count > 0)
             {
-                // need to try all possible removals
-                foreach (var key in sortedKeys)
+                var currentMolecule = currentMutations.Dequeue();
+                if (currentMolecule == "e")
                 {
-                    if (medicineMolecule.Contains(key))
+                    return count.ToString();
+                }
+
+                for (var index = replacementMolecules.Length - 1; index >= 0; index--)
+                {
+                    var molecule = replacementMolecules[index];
+                    foreach (var idx in currentMolecule.GetAllIndexesOf(molecule))
                     {
-                        var idx = medicineMolecule.IndexOf(key);
-                        medicineMolecule = medicineMolecule
-                            .Remove(idx, key.Length)
-                            .Insert(idx, replacements[key]);
-                        count++;
-                        break;
+                        var mutation = currentMolecule
+                            .FastReplaceAtIndex(
+                            molecule, replacements[molecule], idx);
+                            
+                        if (!seenMutations.Contains(mutation))
+                        {
+                            seenMutations.Add(mutation);
+                            nextMutations.Enqueue(mutation);
+                        }
                     }
                 }
 
-                if (medicineMolecule == previousMolecule)
+                if (currentMutations.Count == 0)
                 {
-                    return "Failed";
+                    (currentMutations, nextMutations) = (nextMutations, currentMutations);
+                    count++;
                 }
-
-                previousMolecule = medicineMolecule;
             }
-
-            return count.ToString();
-            
-            // var replacements = GetReplacementMappings(data);
-            // var seen = new HashSet<string>();
-            // var queue = new Queue<string>();
-            // queue.Enqueue("e");
-            // var numberOfMutations = 0;
-            //
-            // do
-            // {
-            //     var nextQueue = new Queue<string>();
-            //     while(queue.Count > 0)
-            //     {
-            //         var seed = queue.Dequeue();
-            //         if (seed == medicineMolecule)
-            //         {
-            //             return numberOfMutations.ToString();
-            //         }
-            //         foreach (var mutation in GetMutations(seed, replacements))
-            //         {
-            //             if (!seen.Contains(mutation))
-            //             {
-            //                 nextQueue.Enqueue(mutation);
-            //             }
-            //             seen.Add(mutation);
-            //         }
-            //     }
-            //
-            //     queue = nextQueue;
-            //     numberOfMutations++;
-            //     
-            // } while (queue.Count > 0);
 
             return "Failed";
         }

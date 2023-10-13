@@ -36,5 +36,38 @@ namespace AdventOfCode
                 new Point( pts[0], pts[1]), 
                 new Point( pts[2], pts[3]));
         }
+
+        public static IEnumerable<int> GetAllIndexesOf(this string s, string match)
+        {
+            var index = s.IndexOf(match);
+            while (index != -1)
+            {
+                yield return index;
+                index = s.IndexOf(match, index + 1);
+            }
+        }
+
+        public static string FastReplaceAtIndex(this string s, string match, string replacement, int index)
+        {
+            var newLength = s.Length - (match.Length - replacement.Length);
+            var newString = new char[newLength];
+            for (var i = 0; i < index; i++)
+            {
+                newString[i] = s[i];
+            }
+
+            for (int i = index, j = 0; i < index + replacement.Length; i++, j++)
+            {
+                newString[i] = replacement[j];
+            }
+
+            for (int i = index + replacement.Length, j = index + match.Length; 
+                 j < s.Length; i++, j++)
+            {
+                newString[i] = s[j];
+            }
+
+            return new string(newString);
+        }
     }
 }
