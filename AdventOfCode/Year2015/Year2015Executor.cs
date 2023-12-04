@@ -6,6 +6,7 @@ using AdventOfCode.Year2015.Day04;
 using AdventOfCode.Year2015.Day15;
 using AdventOfCode.Year2015.Day17;
 using AdventOfCode.Year2015.Day19;
+using AdventOfCode.Year2015.Day20;
 
 namespace AdventOfCode.Year2015
 {
@@ -67,10 +68,10 @@ namespace AdventOfCode.Year2015
             // ProblemFactory.Execute<Day18A>();
             // ProblemFactory.Execute<Day18B>();
             //
-            ProblemFactory.Execute<Day19A>();
-            ProblemFactory.Execute<Day19B>();
+            // ProblemFactory.Execute<Day19A>();
+            // ProblemFactory.Execute<Day19B>();
             //
-            // ProblemFactory.Execute<Day20A>();
+            ProblemFactory.Execute<Day20A>();
             // ProblemFactory.Execute<Day20B>();
             //
             // ProblemFactory.Execute<Day21A>();

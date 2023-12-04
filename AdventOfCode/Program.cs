@@ -6,7 +6,7 @@ namespace AdventOfCode
     {
         static void Main()
         {
-            for (var i = 0; i < 2; i++)
+            for (var i = 0; i < 1; i++)
             {
                 new Year2015Executor().Execute();
                 // new Year2016Executor().Execute();
