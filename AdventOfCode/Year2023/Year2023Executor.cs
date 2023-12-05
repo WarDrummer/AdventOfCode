@@ -15,21 +15,21 @@ namespace AdventOfCode.Year2023
     {
         public void Execute()
         {
-            ProblemFactory.Execute<Day01A>();
-            ProblemFactory.Execute<Day01B>();
-            
-            ProblemFactory.Execute<Day02A>();
-            ProblemFactory.Execute<Day02B>();
-            
-            ProblemFactory.Execute<Day03A>();
-            ProblemFactory.Execute<Day03B>();
-            
-            ProblemFactory.Execute<Day04A>();
-            ProblemFactory.Execute<Day04B>();
+            // ProblemFactory.Execute<Day01A>();
+            // ProblemFactory.Execute<Day01B>();
             //
-            // ProblemFactory.Execute<Day05A>();
-            // ProblemFactory.Execute<Day05B>();
+            // ProblemFactory.Execute<Day02A>();
+            // ProblemFactory.Execute<Day02B>();
             //
+            // ProblemFactory.Execute<Day03A>();
+            // ProblemFactory.Execute<Day03B>();
+            //
+            // ProblemFactory.Execute<Day04A>();
+            // ProblemFactory.Execute<Day04B>();
+            
+            ProblemFactory.Execute<Day05A>();
+            ProblemFactory.Execute<Day05B>();
+            
             // ProblemFactory.Execute<Day06A>();
             // ProblemFactory.Execute<Day06B>();
             //

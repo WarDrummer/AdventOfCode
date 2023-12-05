@@ -69,5 +69,10 @@ namespace AdventOfCode
 
             return new string(newString);
         }
+
+        public static string[] SplitClean(this string s, string separator)
+        {
+            return s.Split(separator, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+        }
     }
 }
