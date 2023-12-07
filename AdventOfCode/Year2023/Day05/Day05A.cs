@@ -72,7 +72,9 @@ namespace AdventOfCode.Year2023.Day05
             return new AlmanacMap
             {
                 Destination = parts[0],
-                Source = parts[1],
+                DestinationOffset = parts[0] - parts[1],
+                SourceStart = parts[1],
+                SourceEnd = parts[1] + parts[2],
                 Range = parts[2]
             };
         }
@@ -80,8 +82,11 @@ namespace AdventOfCode.Year2023.Day05
 
     public class AlmanacMap
     {
-        public long Source { get; set; }
+        public long SourceStart { get; set; }
+        public long SourceEnd { get; set; }
         public long Destination { get; set; }
+        
+        public long DestinationOffset { get; set; }
         public long Range { get; set; }
     }
     
@@ -95,9 +100,9 @@ namespace AdventOfCode.Year2023.Day05
             {
                 foreach (var map in _maps)
                 {
-                    if (key >= map.Source && key < map.Source + map.Range)
+                    if (key >= map.SourceStart && key < map.SourceEnd)
                     {
-                        return map.Destination + (key - map.Source);
+                        return map.DestinationOffset + key;
                     }
                 }
                 return key;

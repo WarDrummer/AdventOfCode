@@ -5,6 +5,9 @@
     &lt;TestAncestor&gt;
       &lt;TestId&gt;xUnit::0408ED5E-4983-4CE7-86A7-98287A44C789::net6.0::AdventOfCode.Tests.StringExtensionsTests.given_when_then&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::0408ED5E-4983-4CE7-86A7-98287A44C789::net6.0::AdventOfCode.Tests.StringExtensionsTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::0408ED5E-4983-4CE7-86A7-98287A44C789::net6.0::AdventOfCode.Tests.Year2023.Day07.HandShouldWin&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::0408ED5E-4983-4CE7-86A7-98287A44C789::net6.0::AdventOfCode.Tests.Year2023.Day07&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
   &lt;/Or&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>
