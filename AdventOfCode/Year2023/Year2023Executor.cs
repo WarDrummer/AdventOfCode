@@ -10,7 +10,7 @@ namespace AdventOfCode.Year2023
     using Day06;
     using Day07;
     using Day08;
-    
+    using Day09;
     public class Year2023Executor : IYearExecutor
     {
         public void Execute()
@@ -36,11 +36,11 @@ namespace AdventOfCode.Year2023
             // ProblemFactory.Execute<Day07A>();
             // ProblemFactory.Execute<Day07B>();
             //
-            ProblemFactory.Execute<Day08A>();
-            ProblemFactory.Execute<Day08B>();
+            // ProblemFactory.Execute<Day08A>();
+            // ProblemFactory.Execute<Day08B>();
             //
-            // ProblemFactory.Execute<Day09A>();
-            // ProblemFactory.Execute<Day09B>();
+            ProblemFactory.Execute<Day09A>();
+            ProblemFactory.Execute<Day09B>();
             //
             // ProblemFactory.Execute<Day10A>();
             // ProblemFactory.Execute<Day10B>();
