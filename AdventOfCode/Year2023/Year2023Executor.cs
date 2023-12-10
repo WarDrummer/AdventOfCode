@@ -1,4 +1,5 @@
 using AdventOfCode.Problem;
+using AdventOfCode.Year2023.Day10;
 
 namespace AdventOfCode.Year2023
 {
@@ -39,11 +40,11 @@ namespace AdventOfCode.Year2023
             // ProblemFactory.Execute<Day08A>();
             // ProblemFactory.Execute<Day08B>();
             //
-            ProblemFactory.Execute<Day09A>();
-            ProblemFactory.Execute<Day09B>();
+            // ProblemFactory.Execute<Day09A>();
+            // ProblemFactory.Execute<Day09B>();
             //
-            // ProblemFactory.Execute<Day10A>();
-            // ProblemFactory.Execute<Day10B>();
+            ProblemFactory.Execute<Day10A>();
+            ProblemFactory.Execute<Day10B>();
             //
             // ProblemFactory.Execute<Day11A>();
             // ProblemFactory.Execute<Day11B>();

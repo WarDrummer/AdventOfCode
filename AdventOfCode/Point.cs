@@ -18,6 +18,26 @@ namespace AdventOfCode
                 "x and y must be less than 0xFFFF for hash to be correct");
         }
 
+        public Point North()
+        {
+            return new Point(X, Y - 1);
+        }
+        
+        public Point South()
+        {
+            return new Point(X, Y + 1);
+        }
+        
+        public Point East()
+        {
+            return new Point(X + 1, Y);
+        }
+        
+        public Point West()
+        {
+            return new Point(X - 1, Y);
+        }
+
         public override int GetHashCode()
         {
             return _hash;
