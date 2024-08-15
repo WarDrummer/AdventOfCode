@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using AdventOfCode.Year2023.Day09;
 using Xunit;
 

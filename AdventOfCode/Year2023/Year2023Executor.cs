@@ -1,18 +1,8 @@
 using AdventOfCode.Problem;
-using AdventOfCode.Year2023.Day10;
 using AdventOfCode.Year2023.Day14;
 
 namespace AdventOfCode.Year2023
 {
-    using Day01;
-    using Day02;
-    using Day03;
-    using Day04;
-    using Day05;
-    using Day06;
-    using Day07;
-    using Day08;
-    using Day09;
     public class Year2023Executor : IYearExecutor
     {
         public void Execute()

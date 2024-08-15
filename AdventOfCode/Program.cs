@@ -1,6 +1,4 @@
-﻿using AdventOfCode.Year2015;
-using AdventOfCode.Year2022;
-using AdventOfCode.Year2023;
+﻿using AdventOfCode.Year2016;
 
 namespace AdventOfCode
 {
@@ -10,8 +8,8 @@ namespace AdventOfCode
         {
             for (var i = 0; i < 1; i++)
             {
-                new Year2015Executor().Execute();
-                // new Year2016Executor().Execute();
+                //new Year2015Executor().Execute();
+                new Year2016Executor().Execute();
                 // new Year2017Executor().Execute();
                 // new Year2018Executor().Execute();
                 // new Year2019Executor().Execute();
