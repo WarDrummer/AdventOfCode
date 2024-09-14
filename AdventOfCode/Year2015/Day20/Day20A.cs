@@ -7,7 +7,13 @@ namespace AdventOfCode.Year2015.Day20
         public override string Solve()
         {
             var target = int.Parse(ParserFactory.CreateSingleLineStringParser().GetData());
-  
+            
+            var numberPresentsDelivered = 0;
+            while(numberPresentsDelivered < target)
+            {
+                
+            }
+
             return "Not Solved";
         }
     }
