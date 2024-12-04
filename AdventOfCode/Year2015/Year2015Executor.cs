@@ -1,5 +1,4 @@
 using AdventOfCode.Problem;
-using AdventOfCode.Year2015.Day07;
 using AdventOfCode.Year2015.Day20;
 
 namespace AdventOfCode.Year2015

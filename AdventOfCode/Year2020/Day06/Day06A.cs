@@ -5,8 +5,6 @@ using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2020.Day06
 {
-    using ParserType = MultiLineStringParser;
-
     public class Day06A : ProblemWithInput<Day06A>
     {
         public override string Solve()

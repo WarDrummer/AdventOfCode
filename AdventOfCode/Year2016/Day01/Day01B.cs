@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2016.Day01
 {

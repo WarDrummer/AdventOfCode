@@ -6,7 +6,7 @@ namespace AdventOfCode.Year2024.Day15
     {
         public override string Solve()
         {
-            // var data = ParserFactory.CreateMultiLineStringParser().GetData();
+            var data = ParserFactory.CreateMultiLineStringParser().GetData();
             return "Not Solved";
         }
     }
