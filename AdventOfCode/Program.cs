@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Year2022;
+using AdventOfCode.Year2024;
 
 namespace AdventOfCode
 {
@@ -15,8 +16,9 @@ namespace AdventOfCode
                 // new Year2019Executor().Execute();
                 // new Year2020Executor().Execute();
                 // new Year2021Executor().Execute();
-                new Year2022Executor().Execute();
+                // new Year2022Executor().Execute();
                 // new Year2023Executor().Execute();
+                new Year2024Executor().Execute();
             }
         }
     }
