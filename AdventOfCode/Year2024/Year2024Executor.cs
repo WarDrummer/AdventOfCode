@@ -12,8 +12,8 @@ namespace AdventOfCode.Year2024
     {
         public void Execute()
         {
-            ProblemFactory.Execute<Day01A>();
-            ProblemFactory.Execute<Day01B>();
+            // ProblemFactory.Execute<Day01A>();
+            // ProblemFactory.Execute<Day01B>();
             //
             // ProblemFactory.Execute<Day02A>();
             // ProblemFactory.Execute<Day02B>();
@@ -24,9 +24,9 @@ namespace AdventOfCode.Year2024
             // ProblemFactory.Execute<Day04A>();
             // ProblemFactory.Execute<Day04B>();
             //
-            // ProblemFactory.Execute<Day05A>();
-            // ProblemFactory.Execute<Day05B>();
-            //
+            ProblemFactory.Execute<Day05A>();
+            ProblemFactory.Execute<Day05B>();
+            
             // ProblemFactory.Execute<Day06A>();
             // ProblemFactory.Execute<Day06B>();
             //
