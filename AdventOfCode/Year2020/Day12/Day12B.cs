@@ -1,3 +1,4 @@
+using System;
 using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2020.Day12
@@ -6,7 +7,7 @@ namespace AdventOfCode.Year2020.Day12
     {
         public override string Solve()
         {
-            // var data = ParserFactory.CreateMultiLineStringParser().GetData();
+            var data = ParserFactory.CreateMultiLineStringParser().GetData();
             return "Not Solved";
         }
     }

@@ -1,4 +1,5 @@
-﻿using AdventOfCode.Year2022;
+﻿using AdventOfCode.Year2020;
+using AdventOfCode.Year2022;
 using AdventOfCode.Year2024;
 
 namespace AdventOfCode
