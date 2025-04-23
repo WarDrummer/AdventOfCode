@@ -97,10 +97,7 @@ namespace AdventOfCode.Year2024.Day06
 
                 if (IsInBounds(location, rowLength, colLength))
                 {
-                    if (!visited.ContainsKey(location))
-                    {
-                        visited[location] = 0;
-                    }
+                    visited.TryAdd(location, 0);
                     visited[location]++;
 
                     if (visited[location] == 4)

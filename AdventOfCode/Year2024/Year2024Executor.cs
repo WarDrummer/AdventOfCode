@@ -10,6 +10,7 @@ using AdventOfCode.Year2024.Day08;
 using AdventOfCode.Year2024.Day09;
 using AdventOfCode.Year2024.Day10;
 using AdventOfCode.Year2024.Day11;
+using AdventOfCode.Year2024.Day12;
 using AdventOfCode.Year2024.Day13;
 
 namespace AdventOfCode.Year2024
@@ -33,8 +34,8 @@ namespace AdventOfCode.Year2024
             // ProblemFactory.Execute<Day05A>();
             // ProblemFactory.Execute<Day05B>();
             //
-            // ProblemFactory.Execute<Day06A>();
-            // ProblemFactory.Execute<Day06B>();
+            ProblemFactory.Execute<Day06A>();
+            ProblemFactory.Execute<Day06B>();
             //
             // ProblemFactory.Execute<Day07A>();
             // ProblemFactory.Execute<Day07B>();
@@ -53,9 +54,9 @@ namespace AdventOfCode.Year2024
             //
             // ProblemFactory.Execute<Day12A>(); 
             // ProblemFactory.Execute<Day12B>();
-            
-            ProblemFactory.Execute<Day13A>();
-            ProblemFactory.Execute<Day13B>();
+            //
+            // ProblemFactory.Execute<Day13A>();
+            // ProblemFactory.Execute<Day13B>();
             //
             // ProblemFactory.Execute<Day14A>();
             // ProblemFactory.Execute<Day14B>();
