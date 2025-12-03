@@ -1,46 +1,45 @@
-namespace AdventOfCode.Year2021.Day11
+namespace AdventOfCode.Year2021.Day11;
+
+public class Octopus
 {
-    public class Octopus
+    public int Energy { get; set; }
+    public bool HasFlashed { get; set; }
+    public Point Location { get; set; }
+
+    public void Reset()
     {
-        public int Energy { get; set; }
-        public bool HasFlashed { get; set; }
-        public Point Location { get; set; }
-
-        public void Reset()
+        if (HasFlashed)
         {
-            if (HasFlashed)
-            {
-                Energy = 0;
-            }
-            HasFlashed = false;
+            Energy = 0;
         }
+        HasFlashed = false;
+    }
 
-        public void AttemptFlash(Grid<Octopus> grid)
+    public void AttemptFlash(Grid<Octopus> grid)
+    {
+        if (Energy > 9 && !HasFlashed)
         {
-            if (Energy > 9 && !HasFlashed)
+            HasFlashed = true;
+            for (var y = Location.Y - 1; y <= Location.Y + 1; y++)
             {
-                HasFlashed = true;
-                for (var y = Location.Y - 1; y <= Location.Y + 1; y++)
+                for (var x = Location.X - 1; x <= Location.X + 1; x++)
                 {
-                    for (var x = Location.X - 1; x <= Location.X + 1; x++)
+                    if (Location.X != x || Location.Y != y)
                     {
-                        if (Location.X != x || Location.Y != y)
+                        var adjacentOctopus = grid[new Point(x, y)];
+                        if(adjacentOctopus != null)
                         {
-                            var adjacentOctopus = grid[new Point(x, y)];
-                            if(adjacentOctopus != null)
-                            {
-                                adjacentOctopus.Energy += 1;
-                                adjacentOctopus.AttemptFlash(grid);
-                            }
+                            adjacentOctopus.Energy += 1;
+                            adjacentOctopus.AttemptFlash(grid);
                         }
                     }
                 }
             }
         }
+    }
 
-        public override string ToString()
-        {
-            return Energy.ToString();
-        }
+    public override string ToString()
+    {
+        return Energy.ToString();
     }
 }

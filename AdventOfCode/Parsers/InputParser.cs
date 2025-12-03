@@ -1,28 +1,27 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace AdventOfCode.Parsers
+namespace AdventOfCode.Parsers;
+
+public abstract class InputParser<T> : IInputParser<T>
 {
-    public abstract class InputParser<T> : IInputParser<T>
+    private readonly string _filePath;
+
+    protected InputParser(string filePath)
     {
-        private readonly string _filePath;
+        _filePath = filePath;
+    }
 
-        protected InputParser(string filePath)
+    protected IEnumerable<string> GetInput()
+    {
+        using (var sr = new StreamReader($"{_filePath}"))
         {
-            _filePath = filePath;
-        }
-
-        protected IEnumerable<string> GetInput()
-        {
-            using (var sr = new StreamReader($"{_filePath}"))
+            while (!sr.EndOfStream)
             {
-                while (!sr.EndOfStream)
-                {
-                    yield return sr.ReadLine();
-                }
+                yield return sr.ReadLine();
             }
         }
-
-        public abstract T GetData();
     }
+
+    public abstract T GetData();
 }

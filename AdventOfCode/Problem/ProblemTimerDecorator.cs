@@ -1,36 +1,35 @@
 using System;
 using System.Diagnostics;
 
-namespace AdventOfCode.Problem
+namespace AdventOfCode.Problem;
+
+internal class ProblemTimerDecorator : IProblem
 {
-    internal class ProblemTimerDecorator : IProblem
+    private readonly IProblem _problem;
+
+    public ProblemTimerDecorator(IProblem problem)
     {
-        private readonly IProblem _problem;
+        _problem = problem;
+    }
 
-        public ProblemTimerDecorator(IProblem problem)
+    public string Solve()
+    {
+        var sw = new Stopwatch();
+        string result;
+        try
         {
-            _problem = problem;
+            sw.Start();
+            result = _problem.Solve();
+        }
+        catch (Exception ex)
+        {
+            result = ex.ToString();
+        }
+        finally
+        {
+            sw.Stop();
         }
 
-        public string Solve()
-        {
-            var sw = new Stopwatch();
-            string result;
-            try
-            {
-                sw.Start();
-                result = _problem.Solve();
-            }
-            catch (Exception ex)
-            {
-                result = ex.ToString();
-            }
-            finally
-            {
-                sw.Stop();
-            }
-
-            return $"{result}\n\r{sw.Elapsed} ({sw.ElapsedMilliseconds}ms)";
-        }
+        return $"{result}\n\r{sw.Elapsed} ({sw.ElapsedMilliseconds}ms)";
     }
 }

@@ -19,8 +19,8 @@ namespace AdventOfCode.Year2025
     {
         public void Execute()
         {
-            // ProblemFactory.Execute<Day01A>();
-            // ProblemFactory.Execute<Day01B>();
+            ProblemFactory.Execute<Day01A>();
+            ProblemFactory.Execute<Day01B>();
             //
             // ProblemFactory.Execute<Day02A>();
             // ProblemFactory.Execute<Day02B>();

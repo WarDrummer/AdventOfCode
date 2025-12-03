@@ -1,19 +1,18 @@
 using System.Text;
 
-namespace AdventOfCode.Parsers
-{
-    public class SingleLineStringParser : InputParser<string>
-    {
-        public SingleLineStringParser(string filePath) : base(filePath) { }
+namespace AdventOfCode.Parsers;
 
-        public override string GetData()
+public class SingleLineStringParser : InputParser<string>
+{
+    public SingleLineStringParser(string filePath) : base(filePath) { }
+
+    public override string GetData()
+    {
+        var sb = new StringBuilder();
+        foreach (var line in GetInput())
         {
-            var sb = new StringBuilder();
-            foreach (var line in GetInput())
-            {
-                sb.Append(line);
-            }
-            return sb.ToString();
+            sb.Append(line);
         }
+        return sb.ToString();
     }
 }

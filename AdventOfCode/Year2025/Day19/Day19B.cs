@@ -1,13 +1,12 @@
 using AdventOfCode.Problem;
 
-namespace AdventOfCode.Year2025.Day19
+namespace AdventOfCode.Year2025.Day19;
+
+public class Day19B : ProblemWithInput<Day19B>
 {
-    public class Day19B : ProblemWithInput<Day19B>
+    public override string Solve()
     {
-        public override string Solve()
-        {
-            // var data = ParserFactory.CreateMultiLineStringParser().GetData();
-            return "Not Solved";
-        }
+        // var data = ParserFactory.CreateMultiLineStringParser().GetData();
+        return "Not Solved";
     }
 }

@@ -1,7 +1,6 @@
-namespace AdventOfCode
+namespace AdventOfCode;
+
+public interface IYearExecutor
 {
-    public interface IYearExecutor
-    {
-        void Execute();
-    }
+    void Execute();
 }
