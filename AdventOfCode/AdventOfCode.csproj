@@ -117,43 +117,22 @@
       <None Update="YearTemplate\Day12\day12.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="YearTemplate\Day13\day13.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="YearTemplate\Day14\day14.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="YearTemplate\Day15\day15.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="YearTemplate\Day16\day16.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="YearTemplate\Day17\day17.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="YearTemplate\Day18\day18.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="YearTemplate\Day19\day19.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="YearTemplate\Day20\day20.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="YearTemplate\Day21\day21.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="YearTemplate\Day22\day22.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="YearTemplate\Day23\day23.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="YearTemplate\Day24\day24.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="YearTemplate\Day25\day25.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Year2015\Day01\day01.in">
