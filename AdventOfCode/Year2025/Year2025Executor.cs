@@ -25,10 +25,10 @@ namespace AdventOfCode.Year2025
             // ProblemFactory.Execute<Day02B>();
             //
             // ProblemFactory.Execute<Day03A>(); 
-            ProblemFactory.Execute<Day03B>();
+            // ProblemFactory.Execute<Day03B>();
             //
             // ProblemFactory.Execute<Day04A>();
-            // ProblemFactory.Execute<Day04B>();
+            ProblemFactory.Execute<Day04B>();
             //
             // ProblemFactory.Execute<Day05A>();
             // ProblemFactory.Execute<Day05B>();
