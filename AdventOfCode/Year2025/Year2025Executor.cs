@@ -34,7 +34,7 @@ namespace AdventOfCode.Year2025
             // ProblemFactory.Execute<Day05B>();
             //
             // ProblemFactory.Execute<Day06A>();
-            ProblemFactory.Execute<Day06B>();
+            // ProblemFactory.Execute<Day06B>();
             //
             // ProblemFactory.Execute<Day07A>();
             // ProblemFactory.Execute<Day07B>();
@@ -43,7 +43,7 @@ namespace AdventOfCode.Year2025
             // ProblemFactory.Execute<Day08B>();
             //
             // ProblemFactory.Execute<Day09A>();
-            // ProblemFactory.Execute<Day09B>();
+            ProblemFactory.Execute<Day09B>();
             //
             // ProblemFactory.Execute<Day10A>();
             // ProblemFactory.Execute<Day10B>();
