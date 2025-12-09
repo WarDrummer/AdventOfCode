@@ -7,15 +7,15 @@ namespace AdventOfCode.Year2025.Day08
 {
     public class Day08A : ProblemWithInput<Day08A>
     {
-        private readonly record struct JunctionBox()
+        private struct JunctionBox
         {
-            public ulong X { get; init; } = 0;
-            public ulong Y { get; init; } = 0;
-            public ulong Z { get; init; } = 0;
+            public long X { get; init; }
+            public long Y { get; init; }
+            public long Z { get; init; }
 
             public double DistanceTo(JunctionBox box)
             {
-                return Math.Abs(Math.Sqrt((box.X - X) * (box.X - X) + (box.Y - Y) * (box.Y - Y) + (box.Z - Z) * (box.Z - Z)));
+                return Math.Sqrt((box.X - X) * (box.X - X) + (box.Y - Y) * (box.Y - Y) + (box.Z - Z) * (box.Z - Z));
             }
         }
         
@@ -23,7 +23,7 @@ namespace AdventOfCode.Year2025.Day08
         {
             var jBoxes = ParserFactory.CreateMultiLineStringParser().GetData()
                 .Select(coords => coords.Split(',')
-                    .Select(ulong.Parse).ToArray())
+                    .Select(long.Parse).ToArray())
                 .Select(arr => new JunctionBox {X = arr[0], Y = arr[1], Z = arr[2]}).ToArray();
 
             var connections = new List<Tuple<double, JunctionBox, JunctionBox>>();
