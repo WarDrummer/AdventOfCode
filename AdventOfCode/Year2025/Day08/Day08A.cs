@@ -36,9 +36,8 @@ namespace AdventOfCode.Year2025.Day08
             var connections = new List<Connection>();
             for (var i = 0; i < jBoxes.Length; i++)
             {
-                for (var j = 0; j < jBoxes.Length; j++)
+                for (var j = i + 1; j < jBoxes.Length; j++)
                 {
-                    if(i == j) continue; // Don't count connections between the same box (e.g. box 0 to box 0'
                     var distance = jBoxes[i].DistanceTo(jBoxes[j]);
                     connections.Add(new Connection {
                         Distance = distance, 
@@ -52,7 +51,7 @@ namespace AdventOfCode.Year2025.Day08
             
             var circuits = new List<HashSet<JunctionBox>>();
             var connectionCount = 0;
-            var numConnectionsToMake = 1000; // CHANGE TO 1000 (or 10 for sample)
+            var numConnectionsToMake = 10; // CHANGE TO 1000 (or 10 for sample)
             foreach(var connection in connections)
             {
                 var box1 = connection.Box1;
@@ -62,7 +61,7 @@ namespace AdventOfCode.Year2025.Day08
                 var circuit1 = circuits.FirstOrDefault(c => c.Contains(box1));
                 var circuit2 = circuits.FirstOrDefault(c => c.Contains(box2));
 
-                // Neither box is in a circuit, create a new one circuit
+                // Neither box is in a circuit, create a new circuit
                 if (circuit1 == null && circuit2 == null)
                 {
                     circuits.Add(new HashSet<JunctionBox> { box1, box2 });

@@ -1,6 +1,6 @@
 namespace AdventOfCode;
 
-public class LPoint
+public struct LPoint
 {
     public long X { get; }
     public long Y { get; }
