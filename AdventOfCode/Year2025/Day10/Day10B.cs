@@ -17,49 +17,16 @@ public class Day10B : Day10A
         foreach (var configuration in configurations)
         {
             MinDepth = int.MaxValue;
-            sumOfMins += SearchForMinConfiguration(configuration).Min();
+            var currentJoltages = new int[configuration.JoltageRequirements.Length];
+            sumOfMins += SearchForMinConfiguration(configuration, currentJoltages).Min();
         }
         
         return sumOfMins.ToString();
     }
 
     public static int MinDepth = int.MaxValue;
-    public static Dictionary<string, int> ConfigToDepth = new();
-    
-    private static IEnumerable<int> SearchForMinConfiguration(LightConfiguration configuration)
-    {
-        foreach (var toggle in configuration.Toggles)
-        {
-            var currentJoltages = new int[configuration.JoltageRequirements.Length];
-           // var newSequence = $"({string.Join(",", toggle)})";
-            foreach (var i in toggle)
-            {
-                currentJoltages[i]++;
-            }
-            
-            if (currentJoltages.AreSame(configuration.JoltageRequirements))
-            {
-                if (1 < MinDepth)
-                {
-                    MinDepth = 1;
-                }
-                yield return 1;
-            }
-            else if(!HasExceededJoltageLimits(configuration.JoltageRequirements, currentJoltages))
-            {
-                foreach (var searchResult in SearchForMinConfiguration(configuration, /*newSequence,*/ currentJoltages, 1))
-                {
-                    yield return searchResult;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
 
-    private static IEnumerable<int> SearchForMinConfiguration(LightConfiguration configuration, /*string sequence,*/ int[] currentJoltages, int depth)
+    private static IEnumerable<int> SearchForMinConfiguration(LightConfiguration configuration, int[] currentJoltages, int depth = 0)
     {
         var currentDepth = depth + 1;
         if (currentDepth < MinDepth)
@@ -67,8 +34,6 @@ public class Day10B : Day10A
             foreach (var toggle in configuration.Toggles)
             {
                 var newJoltages = currentJoltages.ToArray();
-                // var newSequence = sequence + $"({string.Join(",", toggle)})";
-
                 foreach (var i in toggle)
                 {
                     newJoltages[i]++;
@@ -85,7 +50,7 @@ public class Day10B : Day10A
                 }
                 else if (!HasExceededJoltageLimits(configuration.JoltageRequirements, newJoltages))
                 {
-                    foreach (var searchResult in SearchForMinConfiguration(configuration, /* newSequence,*/ newJoltages,
+                    foreach (var searchResult in SearchForMinConfiguration(configuration, newJoltages,
                                  currentDepth))
                     {
                         yield return searchResult;
