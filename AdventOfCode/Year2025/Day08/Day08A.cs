@@ -60,24 +60,23 @@ namespace AdventOfCode.Year2025.Day08
                 // Find the circuits containing each box
                 var circuit1 = circuits.FirstOrDefault(c => c.Contains(box1));
                 var circuit2 = circuits.FirstOrDefault(c => c.Contains(box2));
-
+                
+                connectionCount++;
+                
                 // Neither box is in a circuit, create a new circuit
                 if (circuit1 == null && circuit2 == null)
                 {
                     circuits.Add(new HashSet<JunctionBox> { box1, box2 });
-                    connectionCount++;
                 }
                 // Only box1 is in a circuit, add box2 to it
                 else if (circuit1 != null && circuit2 == null)
                 {
                     circuit1.Add(box2);
-                    connectionCount++;
                 }
                 // Only box2 is in a circuit, add box1 to it
                 else if (circuit1 == null && circuit2 != null)
                 {
                     circuit2.Add(box1);
-                    connectionCount++;
                 }
                 // Both boxes in the same circuit (no need to merge)
                 else if (circuit1 == circuit2)
@@ -89,10 +88,9 @@ namespace AdventOfCode.Year2025.Day08
                 {
                     circuit1.UnionWith(circuit2);  // Merge circuit2 into circuit1
                     circuits.Remove(circuit2);     // Remove the now-empty circuit2
-                    connectionCount++;
                 }
 
-                if (connectionCount == numConnectionsToMake - 1) 
+                if (connectionCount == numConnectionsToMake) 
                     break;
             }
             
