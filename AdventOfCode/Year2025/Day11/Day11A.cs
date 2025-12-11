@@ -18,19 +18,15 @@ namespace AdventOfCode.Year2025.Day11
                 var to = mapping[0];
                 var froms = mapping[1].Split(" ", StringSplitOptions.TrimEntries);
 
-                foreach (var from in froms)
-                {
-                    if (!outToYouMappings.ContainsKey(from))
-                        outToYouMappings.Add(from, new HashSet<string>());
-                    outToYouMappings[from].Add(to);
-                }
+                if (!outToYouMappings.ContainsKey(to))
+                    outToYouMappings.Add(to, new HashSet<string>());
+                outToYouMappings[to].UnionWith(froms);
             }
 
             var count = 0;
-            foreach (var mapping in outToYouMappings["out"])
+            foreach (var mapping in outToYouMappings["you"])
             {
-               count += FindPaths(mapping, "you", outToYouMappings).Sum();
-               // count += FindPathsVerbose(mapping, "you", outToYouMappings, "out->" + mapping).Sum();
+               count += FindPaths(mapping, "out", outToYouMappings).Sum();
             }
 
             return count.ToString();
@@ -48,27 +44,6 @@ namespace AdventOfCode.Year2025.Day11
                 foreach (var f in mappings[from])
                 {
                     foreach(var p in FindPaths(f, to, mappings))
-                    {
-                        yield return 1;
-                    }
-                }
-            }
-        }
-        
-        private static IEnumerable<int> FindPathsVerbose(string from, string to, Dictionary<string, HashSet<string>> mappings,
-            string path)
-        {
-            if (from == to)
-            {
-                Console.WriteLine(path);
-                yield return 1;
-            }
-
-            if (mappings.ContainsKey(from))
-            {
-                foreach (var f in mappings[from])
-                {
-                    foreach(var p in FindPathsVerbose(f, to, mappings, $"{path}->{f}"))
                     {
                         yield return 1;
                     }
