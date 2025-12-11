@@ -12,38 +12,38 @@ namespace AdventOfCode.Year2025.Day11
             var data = ParserFactory.CreateMultiLineStringParser().GetData()
                 .Select(s => s.Split(":", StringSplitOptions.TrimEntries));
             
-            var outToYouMappings = new Dictionary<string, HashSet<string>>();
+            var graph = new Dictionary<string, HashSet<string>>();
             foreach (var mapping in data)
             {
                 var to = mapping[0];
                 var froms = mapping[1].Split(" ", StringSplitOptions.TrimEntries);
 
-                if (!outToYouMappings.ContainsKey(to))
-                    outToYouMappings.Add(to, new HashSet<string>());
-                outToYouMappings[to].UnionWith(froms);
+                if (!graph.ContainsKey(to))
+                    graph.Add(to, new HashSet<string>());
+                graph[to].UnionWith(froms);
             }
 
             var count = 0;
-            foreach (var mapping in outToYouMappings["you"])
+            foreach (var mapping in graph["you"])
             {
-               count += FindPaths(mapping, "out", outToYouMappings).Sum();
+               count += FindPaths(mapping, "out", graph).Sum();
             }
 
             return count.ToString();
         }
 
-        private static IEnumerable<int> FindPaths(string from, string to, Dictionary<string, HashSet<string>> mappings)
+        private static IEnumerable<int> FindPaths(string from, string to, Dictionary<string, HashSet<string>> graph)
         {
             if (from == to)
             {
                 yield return 1;
             }
 
-            if (mappings.ContainsKey(from))
+            if (graph.TryGetValue(from, out var froms))
             {
-                foreach (var f in mappings[from])
+                foreach (var f in froms)
                 {
-                    foreach(var p in FindPaths(f, to, mappings))
+                    foreach(var _ in FindPaths(f, to, graph))
                     {
                         yield return 1;
                     }
