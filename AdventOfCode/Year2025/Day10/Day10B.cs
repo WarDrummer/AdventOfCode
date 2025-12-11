@@ -11,49 +11,48 @@ public class Day10B : Day10A
         var configurationTexts = ParserFactory.CreateMultiLineStringParser().GetData()
             .Select(s => s.Split(" ", StringSplitOptions.RemoveEmptyEntries));
 
-        var configurations = ExtractLightConfigurations(configurationTexts);
+        var configs = ExtractLightConfigurations(configurationTexts);
         
         var sumOfMins = 0;
-        foreach (var configuration in configurations)
+        foreach (var config in configs)
         {
-            MinDepth = int.MaxValue;
-            var currentJoltages = new int[configuration.JoltageRequirements.Length];
-            sumOfMins += SearchForMinConfiguration(configuration, currentJoltages).Min();
+            _minDepth = int.MaxValue;
+            var joltages = new int[config.JoltageRequirements.Length];
+            sumOfMins += FindMin(config, joltages).Min();
         }
         
         return sumOfMins.ToString();
     }
 
-    public static int MinDepth = int.MaxValue;
+    private static int _minDepth = int.MaxValue;
 
-    private static IEnumerable<int> SearchForMinConfiguration(LightConfiguration configuration, int[] currentJoltages, int depth = 0)
+    private static IEnumerable<int> FindMin(LightConfiguration config, int[] joltages, int depth = 0)
     {
         var currentDepth = depth + 1;
-        if (currentDepth < MinDepth)
+        if (currentDepth < _minDepth)
         {
-            foreach (var toggle in configuration.Toggles)
+            foreach (var toggle in config.Toggles)
             {
-                var newJoltages = currentJoltages.ToArray();
+                var newJoltages = joltages.ToArray();
                 foreach (var i in toggle)
                 {
                     newJoltages[i]++;
                 }
 
-                if (newJoltages.AreSame(configuration.JoltageRequirements))
+                if (newJoltages.AreSame(config.JoltageRequirements))
                 {
-                    if (currentDepth < MinDepth)
+                    if (currentDepth < _minDepth)
                     {
-                        MinDepth = currentDepth;
+                        _minDepth = currentDepth;
                     }
 
                     yield return currentDepth;
                 }
-                else if (!HasExceededJoltageLimits(configuration.JoltageRequirements, newJoltages))
+                else if (!HasExceededJoltageLimits(config.JoltageRequirements, newJoltages))
                 {
-                    foreach (var searchResult in SearchForMinConfiguration(configuration, newJoltages,
-                                 currentDepth))
+                    foreach (var results in FindMin(config, newJoltages, currentDepth))
                     {
-                        yield return searchResult;
+                        yield return results;
                     }
                 }
                 else
