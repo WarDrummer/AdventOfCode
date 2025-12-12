@@ -41,8 +41,8 @@ namespace AdventOfCode.Year2025.Day08
 
                 if (circuit1 != circuit2)
                 {
-                    circuit1.UnionWith(circuit2); // Merge circuit2 into circuit1
-                    circuits.Remove(circuit2); // Remove the now-empty circuit2
+                    circuit1.UnionWith(circuit2);
+                    circuits.Remove(circuit2);
                 }
             }
 
