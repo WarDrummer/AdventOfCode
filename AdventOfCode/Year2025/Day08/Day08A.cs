@@ -15,6 +15,7 @@ namespace AdventOfCode.Year2025.Day08
 
             public double DistanceTo(JunctionBox box)
             {
+                // don't bother with square root 
                 return Math.Pow(box.X - X, 2) + Math.Pow(box.Y - Y, 2) + Math.Pow(box.Z - Z, 2);
             }
         }

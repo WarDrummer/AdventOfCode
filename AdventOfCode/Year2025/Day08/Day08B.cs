@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using AdventOfCode.Problem;
 
 namespace AdventOfCode.Year2025.Day08
 {
