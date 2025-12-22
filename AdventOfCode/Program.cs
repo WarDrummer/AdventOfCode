@@ -1,4 +1,5 @@
-﻿using AdventOfCode.Year2020;
+﻿using AdventOfCode.Year2015;
+using AdventOfCode.Year2020;
 using AdventOfCode.Year2022;
 using AdventOfCode.Year2024;
 using AdventOfCode.Year2025;
@@ -11,7 +12,7 @@ static class Program
     {
         for (var i = 0; i < 1; i++)
         {
-            // new Year2015Executor().Execute();
+            new Year2015Executor().Execute();
             // new Year2016Executor().Execute();
             // new Year2017Executor().Execute();
             // new Year2018Executor().Execute();
@@ -21,7 +22,7 @@ static class Program
             // new Year2022Executor().Execute();
             // new Year2023Executor().Execute();
             // new Year2024Executor().Execute();
-            new Year2025Executor().Execute();
+            // new Year2025Executor().Execute();
         }
     }
 }

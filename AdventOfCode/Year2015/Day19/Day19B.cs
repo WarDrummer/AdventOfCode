@@ -13,49 +13,25 @@ namespace AdventOfCode.Year2015.Day19
             
             // Need to try working backwards from medicine molecule, replacing largest molecules first
             var replacements = GetReverseReplacementMappings(data);
-            var replacementMolecules = replacements.Keys.ToArray();
-            Array.Sort(replacementMolecules);
-            Array.Reverse(replacementMolecules);
 
-            var seenMutations = new HashSet<string>();
-            var currentMutations = new Queue<string>();
-            var nextMutations = new Queue<string>();
-            var count = 0;
-            
-            currentMutations.Enqueue(medicineMolecule);
-            while (currentMutations.Count > 0)
+            var current = medicineMolecule;
+            var steps = 0;
+
+            while (current != "e")
             {
-                var currentMolecule = currentMutations.Dequeue();
-                if (currentMolecule == "e")
+                foreach (var (from, to) in replacements)
                 {
-                    return count.ToString();
-                }
-
-                for (var index = replacementMolecules.Length - 1; index >= 0; index--)
-                {
-                    var molecule = replacementMolecules[index];
-                    foreach (var idx in currentMolecule.GetAllIndexesOf(molecule))
+                    var idx = current.IndexOf(from);
+                    if (idx >= 0)
                     {
-                        var mutation = currentMolecule
-                            .FastReplaceAtIndex(
-                            molecule, replacements[molecule], idx);
-                            
-                        if (!seenMutations.Contains(mutation))
-                        {
-                            seenMutations.Add(mutation);
-                            nextMutations.Enqueue(mutation);
-                        }
+                        current = current.FastReplaceAtIndex(from, to, idx);
+                        steps++;
+                        break;
                     }
-                }
-
-                if (currentMutations.Count == 0)
-                {
-                    (currentMutations, nextMutations) = (nextMutations, currentMutations);
-                    count++;
                 }
             }
 
-            return "Failed";
+            return steps.ToString();
         }
         
         private static Dictionary<string, string> GetReverseReplacementMappings(List<string> data)
